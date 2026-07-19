@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Gestor de Tareas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <h1>TaskFlow</h1>
+        <!-- Contador regresivo global o de sesión (Paso 4) -->
+<div id="caja-contador" style="text-align: center; margin-bottom: 15px; font-size: 14px; color: var(--texto-secundario);">
+    Tiempo restante de sesión activa: <span id="contador-regresivo" style="font-weight: bold; color: var(--color-peligro);">10:00</span>
+</div>
+        <!-- Formulario de tareas -->
+        <form id="form-tarea">
+            <input type="text" id="input-tarea" placeholder="Escribe una nueva tarea..." required>
+            <button type="submit" id="btn-guardar">Agregar Tarea</button>
+        </form>
+
+        <!-- Notificaciones dinámicas (Paso 4) -->
+        <div id="notificacion" class="oculto"></div>
+
+        <!-- Lista de tareas del DOM -->
+        <ul id="lista-tareas"></ul>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

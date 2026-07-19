@@ -1,0 +1,180 @@
+/* --- VARIABLES Y CONFIGURACIÓN GENERAL --- */
+:root {
+    --bg-principal: #f4f7f6;
+    --tarjeta-bg: #ffffff;
+    --texto-primario: #2c3e50;
+    --texto-secundario: #7f8c8d;
+    --color-primario: #3498db;
+    --color-primario-hover: #2980b9;
+    --color-exito: #2ecc71;
+    --color-peligro: #e74c3c;
+    --borde-radio: 8px;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transicion: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-principal);
+    color: var(--texto-primario);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.container {
+    background-color: var(--tarjeta-bg);
+    width: 100%;
+    max-width: 550px;
+    padding: 30px;
+    border-radius: var(--borde-radio);
+    box-shadow: var(--sombra);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--texto-primario);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+/* --- FORMULARIO DE ENTRADA --- */
+#form-tarea {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+#input-tarea {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--borde-radio);
+    font-size: 16px;
+    outline: none;
+    transition: var(--transicion);
+}
+
+#input-tarea:focus {
+    border-color: var(--color-primario);
+}
+
+#btn-guardar {
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--borde-radio);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transicion);
+}
+
+#btn-guardar:hover {
+    background-color: var(--color-primario-hover);
+}
+
+/* --- LISTA DE TAREAS --- */
+#lista-tareas {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Elemento individual de la lista (inyectado por JS) */
+.tarea-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 5px solid var(--color-primario);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: var(--transicion);
+}
+
+/* Estado completado (cambia dinámicamente con JS) */
+.tarea-item.completada {
+    border-left-color: var(--color-exito);
+    opacity: 0.7;
+}
+
+.tarea-item.completada .tarea-texto {
+    text-decoration: line-through;
+    color: var(--texto-secundario);
+}
+
+.tarea-texto {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Botones de acción dentro de la tarea */
+.tarea-acciones {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-accion {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: var(--transicion);
+}
+
+.btn-completar {
+    background-color: #e8f8f5;
+    color: var(--color-exito);
+}
+
+.btn-completar:hover {
+    background-color: var(--color-exito);
+    color: white;
+}
+
+.btn-eliminar {
+    background-color: #fdebd0;
+    color: var(--color-peligro);
+}
+
+.btn-eliminar:hover {
+    background-color: var(--color-peligro);
+    color: white;
+}
+
+/* --- NOTIFICACIONES ASÍNCRONAS (Paso 4) --- */
+#notificacion {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 12px 25px;
+    border-radius: var(--borde-radio);
+    box-shadow: var(--sombra);
+    font-size: 14px;
+    z-index: 1000;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.oculto {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
